@@ -23,7 +23,16 @@ function randomPlay() {
 
 function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
+    var move = getInput().toLowerCase();
     // If a `move` has a value, your expression should evaluate to that value.
+    if (typeof move != "string") {
+    	console.log("That is not a valid answer. Try again.");
+    	move = getInput();
+    }
+    else if (move != ("rock" || "paper" || "scissors")) {
+    	console.log("That is not a valid option. Try again.");
+    	move = getInput();
+    }
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
     return /* Your Expression */;
 }
