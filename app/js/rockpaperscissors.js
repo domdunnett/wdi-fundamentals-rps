@@ -54,29 +54,33 @@ function getComputerMove(move) {
 function getWinner(playerMove, compMove) {
     if (playerMove === compMove) 
     {
-    return ("The result is a tie!");
+        return ("The result is a tie!");
     }
     else if (playerMove === "rock") 
     {
         if (compMove === "scissors")
-            return ("rock wins");
+            return ("Player wins with rock");
         else
-            return ("paper wins");
+            return ("Computer wins with paper");
     }
     else if (playerMove === "paper") 
     {
         if (compMove === "rock")
-            return ("paper wins");
+            return ("Player wins with paper");
         else
-            return ("scissors wins");
+            return ("Computer wins with scissors");
     }
     else if (playerMove === "scissors") 
     {
         if (compMove === "rock")
-            return ("rock wins");
+            return ("Computer wins with rock");
     else 
-            return ("scissors wins");
+            return ("Player wins with scissors");
     }
+}
+
+function playerWins() {
+
 }
 
 
@@ -85,7 +89,22 @@ function playToFive() {
     var playerWins = 0;
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
-    return [playerWins, computerWins];
+    while(playerWins < 5 && computerWins < 5) {
+        var usermove = getValidPlayerMove();
+        var machinemove = getComputerMove();
+        var winner = getWinner(usermove,machinemove);
+        if(winner.indexOf("Player")) {
+            playerWins++;
+        }
+        else if(winner.indexOf("Computer")) {
+            computerWins++;
+        }
+    }
+    if(playerWins > computerWins) {
+        console.log("Player wins by a score of " + playerWins + " to " + computerWins);
+    }
+    else {
+        console.log("Computer wins by a score of " + computerWins + " to " + playerWins);
+    }
 }
 
