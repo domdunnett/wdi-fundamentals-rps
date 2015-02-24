@@ -20,45 +20,35 @@ function randomPlay() {
 ////////////////////////////////////////////////
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
+var playerMove = "";
+var compMove = "";
 
-function getPlayerMove() {
-    var playerMove = getInput();
-        switch(playerMove) {
-            case "rock":
-                console.log("You chose rock!");
-                break;
-            case "paper":
-                console.log("You chose paper!");
-                break;
-            case "scissors":
-                console.log("You chose scissors!");
-                break;
-            default:
-                console.log("That is not a valid choice. Please choose again.");
+// Function below checks to see if the user enters one of the three possible answers and assigns it to the playerMove global variable.
+// Continues to ask until asnwer is valid.
+function getValidPlayerMove() {
+    var move = getInput();
+    var correctInput = function(move) {
+        if(move === "rock" || move === "paper" || move === "scissors") {
+            console.log("You chose " + move);
+            return true;
         }
-    return playerMove;
+        else {
+            return false;
+        }
+    };
+    while(correctInput(move) === false){
+        console.log("That is not a valid answer. Please try again");
+        move = getInput();
+    }
+    playerMove = move;
 }
-
-/*    // Write an expression that operates on a variable called `move`
-    var playerMove = getInput();
-    // If a `move` has a value, your expression should evaluate to that value.
-    var validChoices = ["rock", "paper", "scissors"]
-    
-    for (i = 0; i < validChoices.length; i++) {
-        while(playerMove !== validChoices[i]) {
-            console.log("Invalid choice...try again!");
-            playerMove = getInput();
-        }
-        console.log("You chose " + playerMove);
-        return playerMove;
-    }*/
 
 function getComputerMove(move) {
     // Write an expression that operates on a variable called `move`
-    var compMove = randomPlay();
+    compMove = randomPlay();
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    return compMove;
+    console.log("The Computer chose " + compMove)
 }
 
 function getWinner(playerMove, compMove) {
