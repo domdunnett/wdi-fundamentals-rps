@@ -41,6 +41,7 @@ function getValidPlayerMove() {
         move = getInput();
     }
     playerMove = move;
+    return playerMove;
 }
 
 function getComputerMove(move) {
@@ -49,6 +50,7 @@ function getComputerMove(move) {
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
     console.log("The Computer chose " + compMove)
+    return compMove;
 }
 
 function getWinner(playerMove, compMove) {
@@ -79,11 +81,6 @@ function getWinner(playerMove, compMove) {
     }
 }
 
-function playerWins() {
-
-}
-
-
 function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
@@ -107,4 +104,6 @@ function playToFive() {
         console.log("Computer wins by a score of " + computerWins + " to " + playerWins);
     }
 }
+
+playToFive()
 
