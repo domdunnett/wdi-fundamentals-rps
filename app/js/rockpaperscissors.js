@@ -22,11 +22,18 @@ function randomPlay() {
 ////////////////////////////////////////////////
 var playerMove = "";
 var compMove = "";
+var userName = "";
+
+function getName() {
+   console.log("Who dare's challenge the Computer? Please enter your name.")
+   userName = prompt();
+   return userName
+}
 
 // Function below checks to see if the user enters one of the three possible answers and assigns it to the playerMove global variable.
 // Continues to ask until asnwer is valid.
 function getValidPlayerMove() {
-    var move = getInput();
+    var move = getInput().toLowerCase();
     var correctInput = function(move) {
         if(move === "rock" || move === "paper" || move === "scissors") {
             console.log("You chose " + move);
@@ -82,6 +89,7 @@ function getWinner(playerMove, compMove) {
 }
 
 function playToFive() {
+    var name = getName();
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
@@ -94,15 +102,18 @@ function playToFive() {
         var winner = getWinner(usermove,machinemove);
         if(winner.search("Player") > -1) {
             playerWins++;
-            console.log("You win that game. The scores on the doors are\nComputer: " + computerWins + "\nPlayer: "+ playerWins);
+            console.log(userName + " wins that game. The scores on the doors are\nComputer: " + computerWins + "\n"+ userName + ": "+ playerWins);
         }
         else if(winner.search("Computer") > -1) {
             computerWins++;
-            console.log("Computer wins that game. The scores on the doors are\nComputer: " + computerWins + "\nPlayer: "+ playerWins);
+            console.log("Computer wins that game. The scores on the doors are\nComputer: " + computerWins + "\n"+ userName + ": "+ playerWins);
+        }
+        else {
+            console.log("That one was a tie!");
         }
     }
     if(playerWins > computerWins) {
-        console.log("You win by a score of " + playerWins + " to " + computerWins);
+        console.log(userName + " wins by a score of " + playerWins + " to " + computerWins);
     }
     else {
         console.log("Computer wins by a score of " + computerWins + " to " + playerWins);
